@@ -10,11 +10,10 @@ const createUser = (sequelize, DataTypes) => {
       cashforceAdm: DataTypes.TINYINT(1),
     });
   
-    /* User.associate = (models) => {
-      User.hasMany(models.BlogPost, {
-        foreignKey: 'userId', as: 'posts',
-      });
-    }; */
+    User.associate = (models) => {
+      User.hasMany(models.order,
+        { foreignKey: 'userId', as: 'orders' });
+    };
   
     return User;
   };
