@@ -1,26 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <my-invoices-page />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MyInvoicesPage from './pages/MyInvoicesPage.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MyInvoicesPage
   }
 }
 </script>
 
 <style>
+* {
+  margin: 0px;
+  padding: 0px;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: 'DM Sans';
+  font-weight: 500;
+  letter-spacing: 0em;
 }
 </style>
