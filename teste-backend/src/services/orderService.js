@@ -1,9 +1,10 @@
 const { order, provider, buyer, cnpj } = require('../models');
 
-const getAll = async () => {
+const getByUserId = async (id) => {
   try {
     const orders = await order.findAll({
-      attributes: ['nNf', 'emissionDate', 'value', 'orderStatusBuyer'],
+      where: { userId: id },
+      attributes: ['nNf', 'emissionDate', 'value', 'orderStatusBuyer', 'userId'],
       include: [{
           model: provider,
           as: 'providers',
@@ -26,5 +27,5 @@ const getAll = async () => {
 };
 
 module.exports = {
-    getAll,
+    getByUserId,
   };
