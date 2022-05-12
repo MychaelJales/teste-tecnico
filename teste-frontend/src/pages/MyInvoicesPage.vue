@@ -18,6 +18,14 @@ export default {
   data() {
     return {
     }
+  },
+  methods: {
+    getDataOrders() {
+      this.$store.commit('getOrders');
+    }
+  },
+  beforeMount() {
+    this.getDataOrders();
   }
 }
 </script>
