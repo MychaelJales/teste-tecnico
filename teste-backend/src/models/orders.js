@@ -23,26 +23,17 @@ const createOrder = (sequelize, DataTypes) => {
     });
 
     Order.associate = (models) => {
-      Order.belongsTo(models.user, {
-        foreignKey: 'userId', as: 'users',
+      Order.belongsTo(models.buyer, {
+        foreignKey: 'buyerId', as: 'buyers',
       });
-    };
-
-    Order.associate = (models) => {
+      Order.belongsTo(models.provider, {
+        foreignKey: 'providerId', as: 'providers',
+      });
       Order.belongsTo(models.cnpj, {
         foreignKey: 'cnpjId', as: 'cnpjs',
       });
-    };
-
-    Order.associate = (models) => {
-      Order.belongsTo(models.providerId, {
-        foreignKey: 'providerId', as: 'providers',
-      });
-    };
-
-    Order.associate = (models) => {
-      Order.belongsTo(models.buyer, {
-        foreignKey: 'buyerId', as: 'buyers',
+      Order.belongsTo(models.user, {
+        foreignKey: 'userId', as: 'users',
       });
     };
   

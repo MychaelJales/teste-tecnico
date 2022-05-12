@@ -28,13 +28,10 @@ const createProvider = (sequelize, DataTypes) => {
   });
 
   Provider.associate = (models) => {
-    Provider.belongsTo(models.cnpj,
-      { foreignKey: 'cnpjId', as: 'cnpj' });
-  };
-
-  Provider.associate = (models) => {
     Provider.hasMany(models.order,
       { foreignKey: 'providerId', as: 'providers' });
+    Provider.belongsTo(models.cnpj,
+      { foreignKey: 'cnpjId', as: 'cnpj' });
   };
 
   return Provider;

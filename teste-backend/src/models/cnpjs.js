@@ -5,18 +5,12 @@ const createCnpj = (sequelize, DataTypes) => {
     });
 
     Cnpj.associate = (models) => {
-      Cnpj.hasOne(models.buyer,
-        { foreignKey: 'cnpjId', as: 'buyers' });
-    };
-
-    Cnpj.associate = (models) => {
-      Cnpj.hasMany(models.order,
-        { foreignKey: 'cnpjId', as: 'orders' });
-    };
-
-    Cnpj.associate = (models) => {
       Cnpj.hasOne(models.provider,
         { foreignKey: 'cnpjId', as: 'providers' });
+      Cnpj.hasOne(models.buyer,
+        { foreignKey: 'cnpjId', as: 'buyers' });
+      Cnpj.hasMany(models.order,
+        { foreignKey: 'cnpjId', as: 'orders' });
     };
   
     return Cnpj;
