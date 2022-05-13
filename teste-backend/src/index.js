@@ -1,5 +1,9 @@
 const app = require('./app');
 
-const server = app.listen(3000, () => console.log('ouvindo porta 3000!'));
+require('dotenv').config();
+
+const PORT = process.env.PORT;
+
+const server = app.listen(PORT, () => console.log(`ouvindo porta ${PORT}!`));
 
 module.exports = server;
