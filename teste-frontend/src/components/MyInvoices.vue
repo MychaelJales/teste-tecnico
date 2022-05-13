@@ -9,29 +9,57 @@
         </div>
         <p class="text-subtitle">Visualize as notas fiscais que você tem.</p>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>NOTA FISCAL</th>
-            <th>SACADO</th>
-            <th>CEDENTE</th>
-            <th>EMISSÃO</th>
-            <th>VALOR</th>
-            <th>STATUS</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(order, i) in orders" :key="i">
-          <td>{{ order['nNf'] }}</td>
-          <td>{{ order['buyers'].name }}</td>
-          <td>{{ order['providers'].name }}</td>
-          <td>{{ formatData(order['emissionDate']) }}</td>
-          <td>{{ formatValue(order['value']) }}</td>
-          <td>{{ formatStatus(order['orderStatusBuyer']) }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table">
+        <div class="table-head">
+          <div class="row-head">
+            <div class="col-head">
+              <p>NOTA FISCAL</p>
+            </div>
+            <div class="col-head">
+              <p>SACADO</p>
+            </div>
+            <div class="col-head">
+              <p>CEDENTE</p>
+            </div>
+            <div class="col-head">
+              <p>EMISSÃO</p>
+            </div>
+            <div class="col-head">
+              <p>VALOR</p>
+            </div>
+            <div class="col-head">
+              <p>STATUS</p>
+            </div>
+            <div class="col-head">
+            </div>
+          </div>
+        </div>
+        <div class="table-body">
+          <div class="row-body" v-for="(order, i) in orders" :key="i">
+            <div class="col-body">
+              <p>{{ order['nNf'] }}</p>
+            </div>
+            <div class="col-body">
+              <p>{{ order['buyers'].name }}</p>
+            </div>
+            <div class="col-body">
+              <p>{{ order['providers'].name }}</p>
+            </div>
+            <div class="col-body">
+              <p>{{ formatData(order['emissionDate']) }}</p>
+            </div>
+            <div class="col-body font-green">
+              <p>{{ formatValue(order['value']) }}</p>
+            </div>
+            <div class="col-body font-green">
+              <p>{{ formatStatus(order['orderStatusBuyer']) }}</p>
+            </div>
+            <div class="col-body col-button">
+              <button>Dados do cedente</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -93,7 +121,7 @@ export default {
 
 .top-bar {
   height: 7vh;
-  border-bottom: 1px solid #DFE2EB;
+  /* border-bottom: 1px solid #DFE2EB; */
 }
 
 .header-container div{
@@ -114,7 +142,7 @@ export default {
  font-style: normal;
   font-weight: 700;
   color: #021B51;
-  font-size: 12px;
+  font-size: 11px;
   padding-right: 4px;
 }
 
@@ -131,17 +159,57 @@ export default {
   color: #727D94;
 }
 
-table {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-th {
-  font-size: 8px;
+.col-head p{
+  font-size: 7px;
   font-style: normal;
   font-weight: 500;
   color: #A1A8B8;
   padding-left: 10px;
-  padding-right: 40px;
+  padding-bottom: 10px;
+}
+
+.col-body p{
+  font-size: 7px;
+  font-style: normal;
+  font-weight: 500;
+  color: #4D5566;
+  padding-left: 10px;
+}
+
+.row-body {
+  border: #DFE2EB solid 1px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+.row-head, .row-body {
+  margin-left: 20px;
+  margin-right: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+}
+
+button {
+  border:1px solid #CAD3FF;
+  border-radius:24px;
+  background: #FFFFFF;
+  color: #727D94;
+  display:inline-block;
+  cursor:pointer;
+  font-size: 6px;
+  font-weight: 700;
+  padding:4px 12px;
+  text-decoration:none;
+}
+
+.col-button {
+  padding-bottom: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.font-green p{
+  color: #00AD8C;
 }
 </style>

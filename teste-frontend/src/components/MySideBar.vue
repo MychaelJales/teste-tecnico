@@ -28,8 +28,8 @@ export default {
 }
 
 .logo {
-  width: 100px;
-  padding: 15px;
+  width: 80px;
+  padding: 10px;
 }
 
 .menu {
@@ -38,16 +38,16 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: left;
-  height: 40px;
+  height: 35px;
 }
 
 .menu-icon {
-  height: 10px;
+  height: 8px;
   padding: 5px;
 }
 
 .menu-text {
-  font-size: 12px;
+  font-size: 9px;
   color: #00AD8C;
 }
 </style>
