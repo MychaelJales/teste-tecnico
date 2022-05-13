@@ -21,10 +21,10 @@ export default {
   },
   methods: {
     getDataOrders() {
-      this.$store.commit('getOrders');
+      this.$store.dispatch('getOrders');
     }
   },
-  beforeMount() {
+  created() {
     this.getDataOrders();
   }
 }

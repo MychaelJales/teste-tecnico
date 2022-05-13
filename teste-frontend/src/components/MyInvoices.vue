@@ -21,17 +21,64 @@
             <th></th>
           </tr>
         </thead>
+        <tbody>
+          <tr v-for="(order, i) in orders" :key="i">
+          <td>{{ order['nNf'] }}</td>
+          <td>{{ order['buyers'].name }}</td>
+          <td>{{ order['providers'].name }}</td>
+          <td>{{ formatData(order['emissionDate']) }}</td>
+          <td>{{ formatValue(order['value']) }}</td>
+          <td>{{ formatStatus(order['orderStatusBuyer']) }}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'MyInvoices',
   data() {
     return {
-
+      statusName: [
+        'Pendente de confirmação',
+        'Pedido confirmado',
+        'Não reconhece o pedido',
+        'Mercadoria não recebida',
+        'Recebida com avaria',
+        'Devolvida',
+        'Recebida com devolução parcial',
+        'Recebida e confirmada',
+        'Pagamento Autorizado',
+      ]
+    }
+  },
+  computed: {
+    orders() {
+      return this.$store.state.orders.dataOrders;
+    },
+  },
+  methods: {
+    addZero(numero){
+      if (numero <= 9) 
+          return "0" + numero;
+      else
+          return numero; 
+    },
+    formatData(date) {
+      const dateActual = new Date(date);
+      const dateActualFormated = (this.addZero(dateActual.getDate().toString()) + "/" + (this.addZero(dateActual.getMonth()+1).toString()) + "/" + dateActual.getFullYear());
+      return dateActualFormated;
+    },
+    formatValue(value) {
+      const valueNumber = parseFloat(value);
+      const valueFormated = valueNumber.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+      return valueFormated;
+    },
+    formatStatus(i) {
+      return this.statusName[i];
     }
   }
 }
