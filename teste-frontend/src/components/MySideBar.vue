@@ -5,7 +5,7 @@
     </div>
     <div class="row menu">
       <img class="menu-icon" src="../assets/menu-item.svg" alt="icone do menu">
-      <p class="menu-text">Notas fiscais</p>
+      <a href="/" class="menu-text">Notas fiscais</a>
     </div>
   </div>
 </template>
@@ -48,6 +48,7 @@ export default {
 
 .menu-text {
   font-size: 9px;
+  text-decoration: none;
   color: #00AD8C;
 }
 </style>
